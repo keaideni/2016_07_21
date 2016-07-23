@@ -22,7 +22,7 @@ int main()
 
 
 
-	//DMRGP DMRG(para);
+	DMRGP DMRG(para);
 	//DMRG.fwave.show();
 
         QWave fwave;
@@ -32,12 +32,12 @@ int main()
 
 
 	std::ofstream Fdata("./result/data", std::ios_base::out | std::ios_base::app);
-	CalcuCorr(para.ParticleNo/2+1, fwave, Fdata);
-	calcustructure(fwave, para.ParticleNo/2+1, para.ParticleNo, Fdata);
+	CalcuCorr(DMRG.OrbitalM, fwave, Fdata);
+	calcustructure(fwave, DMRG.OrbitalM, para.ParticleNo, Fdata);
 	Fdata.close();
 
 
-	calcudensity(para.ParticleNo/2+1, fwave, para.ParticleNo);
+	calcudensity(DMRG.OrbitalM, fwave, para.ParticleNo);
 
 	system("pause");
 

@@ -281,7 +281,7 @@ void DMRGP::getEnergyP(Parameter& para, int dir)
 
 
 
-	int qtot = Sys.Orbital + 1;
+	int qtot = (Sys.Orbital + 1)/2;
 	//std::cout<<qtot<<std::endl;
 	Super Sup(para, Sys, m, n, Env, qtot);
 	//std::cout<<"hehe"<<std::endl;
