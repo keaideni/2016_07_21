@@ -113,7 +113,7 @@ void CalcuCorr(const int& OrbitalM, const QWave& fwave, std::ofstream& Fdata)
                 {
                         j-= 2;
                 }
-                if((i>(OrbitalM-1) * 2)||(j<0))break;
+                if((i>OrbitalM* 2)||(j<=0))break;
                 fflag *= -1;
 
 
@@ -174,7 +174,7 @@ void CalcuCorr(const int& OrbitalM, const QWave& fwave, std::ofstream& Fdata)
                 {
                         j-= 2;
                 }
-                if((i>(OrbitalM-1)*2)||(j<0))break;
+                if((i>OrbitalM*2)||(j<=0))break;
                 fflag *= -1;
 
 
@@ -189,7 +189,7 @@ void CalcuCorr(const int& OrbitalM, const QWave& fwave, std::ofstream& Fdata)
         correlation=CacuCorrM(corr.CorrO, m.SubSysCdag, fwave);
 
         
-        CorrLenth += pow(2, 2)*correlation;
+        CorrLenth += correlation;
                 
         CorrSum +=correlation;
         //================================================================
@@ -528,21 +528,27 @@ double RdenCorr(const QWave& fwave, const int& OrbitalM, const int& orbital)
 double calcustructure(const QWave& fwave, const int& OrbitalM, const int& endN, std::ofstream& Fdata);
 double calcustructure(const QWave& fwave, const int& OrbitalM, const int& endN, std::ofstream& Fdata)
 {
-        double Sq(0), Sr(0);
-        int flag(1), fflag(1);
+        double Sq(QdenCorr(fwave, OrbitalM, 1)), Sr(RdenCorr(fwave, OrbitalM, 2));
+        int flag(-1), fflag(-1);
 
-        for(int i=1; i<=endN; ++i)
+
+
+        for(int i=3; i<=endN; ++i)
         {
                 if(i%2 == 1)
                 {
-                        Sq += flag*QdenCorr(fwave, OrbitalM, i);
+                        Sq += flag*2*QdenCorr(fwave, OrbitalM, i);
                         flag*=-1;
                 }else
                 {
-                        Sr += fflag*RdenCorr(fwave, OrbitalM, i);
+                        Sr += fflag*2*RdenCorr(fwave, OrbitalM, i);
                         fflag*=-1;
                 }
         }
+        Sq += flag*QdenCorr(fwave, OrbitalM, endN+1);
+        Sr += fflag*RdenCorr(fwave, OrbitalM, endN+2);
+
+
         Sq /= endN;
         Sr /= endN;
 

@@ -33,11 +33,11 @@ int main()
 
 	std::ofstream Fdata("./result/data", std::ios_base::out | std::ios_base::app);
 	CalcuCorr(DMRG.OrbitalM, fwave, Fdata);
-	calcustructure(fwave, DMRG.OrbitalM, para.ParticleNo, Fdata);
+	calcustructure(fwave, DMRG.OrbitalM, para.LatticeSize/2, Fdata);
 	Fdata.close();
 
 
-	calcudensity(DMRG.OrbitalM, fwave, para.ParticleNo);
+	calcudensity(DMRG.OrbitalM, fwave, para.LatticeSize/2);
 
 	system("pause");
 

@@ -58,8 +58,20 @@ void Corr::Initial(const Sub& sub,const Sub& subm, const int& orbital, const int
                 OP tempCorrO1;
                 tempCorrO1.time(subm.SubSysCdag, subm.SubSysC);
                 tempCorrO.time(tempCorrO1, tempCorrO1);
+        }else if(type == 8)//initialize the n_{l/2+1}
+        {
+                tempCorrO.time(sub.SubSysCdag, sub.SubSysC);
+                Type = 3;
+        }else if(type == 9)//initialize the Cdag_{l/2+1}.l=para.latticesize
+        {
+                tempCorrO=sub.SubSysC;
+                Type = 1;
+        }else if(type == 10)
+        {
+                tempCorrO=sub.SubSysCdag;
+                Type = 2;
         }
-        if(type == 4 || type == 5)
+        if(type == 4 || type == 5 || type == 8 || type==9||type==10)
         {
                 CorrO.kronO(tempCorrO, subm.SubSysEye);
         }else if(type == 6)

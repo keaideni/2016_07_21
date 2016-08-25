@@ -281,7 +281,7 @@ void DMRGP::getEnergyP(Parameter& para, int dir)
 
 
 
-	int qtot = (Sys.Orbital + 1)/2;
+	int qtot = (Sys.Orbital + 1);
 	//std::cout<<qtot<<std::endl;
 	Super Sup(para, Sys, m, n, Env, qtot);
 	//std::cout<<"hehe"<<std::endl;
@@ -895,34 +895,55 @@ void DMRGP::CorrUpdate(const int& dir, const Parameter& para)
                 if(OrbitalM == OrbitalN)
                 {
                                         
-                        //if(OrbitalN == para.LatticeSize/4 + 1) return;
+                        if(OrbitalM == para.LatticeSize/2) 
+                        {
+                                corr.Initial(Env, m, OrbitalM+1, 8, truncU);//the n_{para.LatticeSize/2+1}
+                                corr.save();
+
+                                corr.Initial(Env, m, OrbitalM+1, 9, truncU);//the c_{para.LatticeSize/2+1}
+                                corr.save();
+                        }
                         corr.Initial(Env, m, OrbitalM, 1, truncU);
                         corr.save();
                         corr.Initial(Env, m, OrbitalM, 3, truncU);
                         corr.save();
-                        for(int i = para.LatticeSize/2; i > OrbitalM; --i)
+                        for(int i = para.LatticeSize/2+2; i > OrbitalM; --i)
                         {
-                                corr.read(i, 1);
+                                
+                                if(OrbitalM==para.LatticeSize/2) break;
+                                corr.read(i, 3);
                                 corr.update(m, truncU, 1);
                                 corr.save();
 
-                                corr.read(i, 3);
+                                //if(i>=para.LatticeSize/2+1) continue;
+                                corr.read(i, 1);
                                 corr.update(m, truncU, 1);
                                 corr.save();
                         }
                 }//when the block Env eat the point n, the corr1 only update.
                 else
                 {
-                        for(int i = para.LatticeSize/2; i >= OrbitalN; --i)
+                        if(OrbitalN==para.LatticeSize/2)
                         {
-                                corr.read(i, 1);
-                                corr.update(n, truncU, 2);
+                                corr.Initial(Env, n, OrbitalN+2, 3, truncU);
                                 corr.save();
+
+                                corr.Initial(Env, n, OrbitalN+2, 1, truncU);
+                                corr.save();
+                        }
+                        for(int i = para.LatticeSize/2+2; i >= OrbitalN; --i)
+                        {
+                                if((i==para.LatticeSize/2+2)&&OrbitalN==para.LatticeSize/2)continue;
 
                                 corr.read(i, 3);
                                 
                                 //corr.corro().show();
                                 
+                                corr.update(n, truncU, 2);
+                                corr.save();
+
+                                //if(i>=para.LatticeSize/2+1) continue;
+                                corr.read(i, 1);
                                 corr.update(n, truncU, 2);
                                 corr.save();
                         }
@@ -935,7 +956,7 @@ void DMRGP::CorrUpdate(const int& dir, const Parameter& para)
                 {
                         if(OrbitalM == 2)
                         {
-                                corr.Initial(Sys, m, 1, 4, truncU);
+                                corr.Initial(Sys, m, 1, 4, truncU);//initialize n1
                                 corr.save();
                                 //initialize the n1n1
                                 corr.Initial(Sys, m, 1, 5, truncU);//corr.show();
@@ -946,6 +967,9 @@ void DMRGP::CorrUpdate(const int& dir, const Parameter& para)
                                 corr.save();*/
 
                                 corr.Initial(Sys, m, 2, 7, truncU);//corr.show(); exit(1);
+                                corr.save();
+
+                                corr.Initial(Sys, m, 1, 10, truncU);//initialize Cdag1.
                                 corr.save();
 
                         }else
@@ -975,8 +999,9 @@ void DMRGP::CorrUpdate(const int& dir, const Parameter& para)
 
 
 
-                        for(int i = 2; i < OrbitalM; ++i)
+                        for(int i = 1; i < OrbitalM; ++i)
                         {
+                                if(OrbitalM == 2) break;
                                 corr.read(i, 2);
                                 corr.update(m, truncU, 1);
                                 corr.save();
@@ -1009,7 +1034,7 @@ void DMRGP::CorrUpdate(const int& dir, const Parameter& para)
                 }//when the block Env eat the point n, the corr1 only update.
                 else
                 {
-                        for(int i = 2; i <= OrbitalN; ++i)
+                        for(int i = 1; i <= OrbitalN; ++i)
                         {
                                 corr.read(i, 2);
                                 //corr.corro().show();
