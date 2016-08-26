@@ -17,7 +17,7 @@ public:
 	{
 		wave = sup.Wave;
                 int a(6);
-                if(sup.Dim < 6)a=2;
+                if(sup.Dim < 6)a=4;
 		SymEigsSolver<double, SMALLEST_ALGE, Super> eigs(&sup, 1, a);
 		eigs.init();
 		eigs.compute();
@@ -34,7 +34,7 @@ public:
         {
                 wave = sup.Wave;
                 int a(6);
-                if(sup.Dim < 6)a=2;
+                if(sup.Dim < 6)a=4;
                 SymEigsSolver<double, SMALLEST_ALGE, Super> eigs(&sup, 1, a);
                 eigs.init();
                 eigs.compute();
@@ -58,7 +58,7 @@ public:
                 for(int i = 0; i < sup.Dim; ++i)pt[i] = f.at(i);
                 
                 int a(6);
-                if(sup.Dim < 6)a=2;
+                if(sup.Dim < 6)a=4;
                 SymEigsSolver<double, SMALLEST_ALGE, Super> eigs(&sup, 1, a);
                 eigs.init(pt);
                 eigs.compute();
@@ -81,7 +81,7 @@ public:
                 for(int i = 0; i < sup.Dim; ++i)pt[i] = f.at(i);
                 
                 int a(6);
-                if(sup.Dim < 6)a=2;
+                if(sup.Dim < 6)a=4;
                 SymEigsSolver<double, SMALLEST_ALGE, Super> eigs(&sup, 1, a);
                 eigs.init(pt);
                 eigs.compute();

@@ -281,7 +281,7 @@ void DMRGP::getEnergyP(Parameter& para, int dir)
 
 
 
-	int qtot = (Sys.Orbital + 1);
+	int qtot = (Sys.Orbital + 1)/2;
 	//std::cout<<qtot<<std::endl;
 	Super Sup(para, Sys, m, n, Env, qtot);
 	//std::cout<<"hehe"<<std::endl;
@@ -523,7 +523,7 @@ void DMRGP::SweepP(Parameter& para, int& OS, int& OE, int& dir)
 			if (dir == 1)
 			{
 
-				if (para.LatticeSize - OS == 3)
+				if (para.LatticeSize==OE)
 				{
 
 					break;
@@ -531,7 +531,7 @@ void DMRGP::SweepP(Parameter& para, int& OS, int& OE, int& dir)
 			}
 			else
 			{
-				if (OE == 4)
+				if (OS == 1)
 				{
 
 					break;
