@@ -35,7 +35,7 @@ public:
 	QWave(const QWave& wave);
 	void initial(const QWave& wave); //for the inital wave.
 	QWave(const OP& Sys, const OP& m, const OP& n, const OP& Env, int QTot);
-	void Initial(const OP& Sys, const OP& m, const OP& n, const OP& Env, int QTot);
+	//void Initial(const OP& Sys, const OP& m, const OP& n, const OP& Env, int QTot);
 
 
 	void setZero();

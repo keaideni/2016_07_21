@@ -15,24 +15,26 @@ Super::~Super()
 
 
 
-Super::Super(const Parameter& para_, const Sub& sys, const Sub& m, const Sub& n, const Sub& env, const int& TotQ)
+Super::Super(const Parameter& para_, const Sub& sys, const Sub& m, const Sub& n, const Sub& env, const int& TotQ):
+
+	Wave(sys.SubSys, m.SubSys, n.SubSys, env.SubSys, TotQ),
+	SaveWave(Wave),
+
+	para(para_),
+
+	
+
+	RealSysBlock(&sys),
+	RealMBlock(&m),
+	RealNBlock(&n),
+	RealEnvBlock(&env)
 {
-	Wave.Initial(sys.SubSys, m.SubSys, n.SubSys, env.SubSys, TotQ);
-	SaveWave = Wave;
-
-	para = para_;
-
-	Dim = Wave.getDim();
-
-	RealSysBlock = &sys;
-	RealMBlock = &m;
-	RealNBlock = &n;
-	RealEnvBlock = &env;
+        Dim = Wave.getDim();
 }
 
 
 
-void Super::Initial(const Parameter& para_, const Sub& sys, const Sub& m, const Sub& n, const Sub& env, int TotQ)
+/*void Super::Initial(const Parameter& para_, const Sub& sys, const Sub& m, const Sub& n, const Sub& env, int TotQ)
 {
 	Wave = QWave(sys.SubSys, m.SubSys, n.SubSys, env.SubSys, TotQ);
 	SaveWave = Wave;
@@ -45,7 +47,7 @@ void Super::Initial(const Parameter& para_, const Sub& sys, const Sub& m, const 
 	RealMBlock = &m;
 	RealNBlock = &n;
 	RealEnvBlock = &env;
-}
+}*/
 
 
 

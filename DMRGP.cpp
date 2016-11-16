@@ -319,10 +319,10 @@ void DMRGP::getEnergyP(Parameter& para, int dir)
 		<< ",    truncerr = " << std::setprecision(15) << truncerr << std::endl;
 
 
-	/*std::cout << "Q = " << qtot << "    WaveD = " <<std::setw(4)<< Sup.Dim
+	std::cout << "Q = " << qtot << "    WaveD = " <<std::setw(4)<< Sup.Dim
 	<< "      OS ="  <<std::setw(2)<<Sys.Orbital << ",  OE =" <<std::setw(2)<< Env.Orbital
 	<< ",    E = " <<std::setw(10)<< std::setprecision(15)<<para.Energy <<",    trace = "<< std::setprecision(15)<<trace
-	<<",    truncerr = "<< std::setprecision(15)<<truncerr<<std::endl;*/
+	<<",    truncerr = "<< std::setprecision(15)<<truncerr<<std::endl;
 	//FEnergy = para.Energy;
 	//FTrace = trace;
 	//FTruncerr = truncerr;
@@ -406,7 +406,7 @@ void DMRGP::SweepP(Parameter& para, int& OS, int& OE, int& dir)
 	{
 
 		SaveAll << "the " << (flag + 1) << "th Sweep" << std::endl;
-		//std::cout<<"the "<<(flag+1)<<"th Sweep"<<std::endl;
+		std::cout<<"the "<<(flag+1)<<"th Sweep"<<std::endl;
 		//dir*=(-1);//local here for the first left direction sweep
 
 
@@ -587,10 +587,10 @@ void DMRGP::SweepP(Parameter& para, int& OS, int& OE, int& dir)
                 << ",    trace = " << std::setprecision(15) << FTrace
                 << ",    truncerr = " << std::setprecision(15) << FTruncerr << "              para.D = "<<std::setprecision(15)<<para.D
                 <<"          Entanglment = "<<std::setprecision(15)<<FEntanglement<<std::endl;
-        /*std::cout << "Q = " << para.ParticleNo << "    LatticeSize = " << std::setw(4) << para.LatticeSize << ",      gr = " << std::setw(4) << para.gr << ",    gl = " << std::setw(4) << para.gl
+        std::cout << "Q = " << para.ParticleNo << "    LatticeSize = " << std::setw(4) << para.LatticeSize << ",      gr = " << std::setw(4) << para.gr << ",    gl = " << std::setw(4) << para.gl
                 << ",    trace = " << std::setprecision(15) << FTrace
                 << ",    truncerr = " << std::setprecision(15) << FTruncerr << "              para.D = "<<std::setprecision(15)<<para.D
-                <<"          Entanglment = "<<std::setprecision(15)<<FEntanglement<<std::endl;*/
+                <<"          Entanglment = "<<std::setprecision(15)<<FEntanglement<<std::endl;
         
 }
 
@@ -676,11 +676,11 @@ void DMRGP::getEnergySweepP(Parameter& para, int dir)
 
 
 
-	/*std::cout << "Q = " << qtot << ",    E = " << std::setprecision(15)<<Energy <<std::endl
+	std::cout << "Q = " << qtot << ",    E = " << std::setprecision(15)<<Energy <<std::endl
 	<< "      OS ="  <<std::setw(2)<<Sys.Orbital << ",  OE =" <<std::setw(2)<< Env.Orbital
         << "      OrbitalM ="  <<std::setw(2)<<OrbitalM << ",  OrbitalN =" <<std::setw(2)<< OrbitalN
 	<<",    trace = "<< std::setprecision(15)<<trace
-	<<",    truncerr = "<< std::setprecision(15)<<truncerr << std::endl<<std::endl;*/
+	<<",    truncerr = "<< std::setprecision(15)<<truncerr << std::endl<<std::endl;
 
 	if (Sys.Orbital == (para.LatticeSize - 2) / 2)
 	{

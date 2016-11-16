@@ -43,7 +43,7 @@ public:
 	~Super();
 	Super(const Parameter& para, const Sub& sys, const Sub& m, const Sub& n, const Sub& env, const int& TotQ);
 
-	void Initial(const Parameter& para, const Sub& sys, const Sub& m, const Sub& n, const Sub& env, int TotQ);
+	//void Initial(const Parameter& para, const Sub& sys, const Sub& m, const Sub& n, const Sub& env, int TotQ);
 
 	//===========to calculate the QWave after the operation of the hamiltion=============
 	void f1tof2(const double* f, double* g);

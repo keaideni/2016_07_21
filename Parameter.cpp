@@ -6,24 +6,24 @@ Parameter::~Parameter(){}
 Parameter::Parameter(){}
 
 
-Parameter::Parameter(const Parameter &para)
+Parameter::Parameter(const Parameter &para):
+
+	Wz(para.Wz),
+	Wc(para.Wc),
+	gr(para.gr),
+	gl(para.gl),
+
+	Energy(para.Energy),
+	LatticeSize(para.LatticeSize),
+	ParticleNo(para.ParticleNo),
+	SiteNo(para.SiteNo),
+	DeltaQL(para.DeltaQL),
+	DeltaQR(para.DeltaQR),
+
+	D(para.D),
+	SweepNo(para.SweepNo),
+	EdgeCondition(para.EdgeCondition)
 {
-	Wz = para.Wz;
-	Wc = para.Wc;
-	gr = para.gr;
-	gl = para.gl;
-
-	Energy = para.Energy;
-	LatticeSize = para.LatticeSize;
-	ParticleNo = para.ParticleNo;
-	SiteNo = para.SiteNo;
-	DeltaQL = para.DeltaQL;
-	DeltaQR = para.DeltaQR;
-
-	D = para.D;
-	SweepNo = para.SweepNo;
-	EdgeCondition = para.EdgeCondition;
-
 }
 
 void Parameter::save()

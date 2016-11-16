@@ -10,9 +10,9 @@ QWave::~QWave(){}
 
 
 
-QWave::QWave(const QWave& wave)
+QWave::QWave(const QWave& wave):
+	WavePart(wave.WavePart)
 {
-	WavePart = wave.WavePart;
 }
 
 
@@ -76,7 +76,7 @@ QWave::QWave(const OP& Sys, const OP& m, const OP& n, const OP& Env, int QTot)
 
 
 
-void QWave::Initial(const OP& Sys, const OP& m, const OP& n, const OP& Env, int QTot)
+/*void QWave::Initial(const OP& Sys, const OP& m, const OP& n, const OP& Env, int QTot)
 {
 	for (auto itm = m.QDim.begin(); itm != m.QDim.end(); itm++)
 	{
@@ -110,7 +110,7 @@ void QWave::Initial(const OP& Sys, const OP& m, const OP& n, const OP& Env, int 
 
 		}
 	}
-}
+}*/
 
 
 

@@ -6,33 +6,31 @@ Sub::Sub(){}
 Sub::~Sub(){}
 
 
-Sub::Sub(const Sub& block)
+Sub::Sub(const Sub& block):
+
+	Orbital(block.Orbital),
+	QorRl(block.QorRl),
+	QorRr(block.QorRr),
+	SubSys(block.SubSys),
+	SubSysCdag(block.SubSysCdag),
+	SubSysC(block.SubSysC),
+	SubSysEye(block.SubSysEye),
+
+
+	SubSysCdag1(block.SubSysCdag1),
+	SubSysC1(block.SubSysC1)
+
 {
-	Orbital = block.Orbital;
-	QorRl = block.QorRl;
-	QorRr = block.QorRr;
-	SubSys = block.SubSys;
-	SubSysCdag = block.SubSysCdag;
-	SubSysC = block.SubSysC;
-	SubSysEye = block.SubSysEye;
-
-
-	SubSysCdag1 = block.SubSysCdag1;
-	SubSysC1 = block.SubSysC1;
-
-
-
-
 }
 
 
 
-Sub::Sub(const Parameter& para, const int& orbital_)
-{
-	Orbital = orbital_;
-	QorRl = orbital_ % 2;
-	QorRr = orbital_ % 2;
+Sub::Sub(const Parameter& para, const int& orbital_):
 
+	Orbital(orbital_),
+	QorRl(orbital_ % 2),
+	QorRr(orbital_ % 2)
+{
 	if (QorRl == 0)
 	{
 		//std::cout<<"haha"<<std::endl;

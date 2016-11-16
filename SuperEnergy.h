@@ -13,9 +13,10 @@ public:
 	QWave wave;
 
         SuperEnergy(){};
-	SuperEnergy(Parameter&para,Super& sup)
-	{
-		wave = sup.Wave;
+	SuperEnergy(Parameter&para,Super& sup):
+	
+		wave(sup.Wave)
+        {
                 int a(6);
                 if(sup.Dim < 6)a=4;
 		SymEigsSolver<double, SMALLEST_ALGE, Super> eigs(&sup, 1, a);
@@ -48,9 +49,10 @@ public:
                 
         };
 
-        SuperEnergy(Parameter&para,Super& sup, const QWave& initwave)
+        SuperEnergy(Parameter&para,Super& sup, const QWave& initwave):
+        
+                wave(sup.Wave)
         {
-                wave = sup.Wave;
                 std::vector<double> f;
                 wave.initial(initwave);
                 wave.Wave2f(f);
